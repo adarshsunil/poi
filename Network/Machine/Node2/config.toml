@@ -1,0 +1,27 @@
+# Valid TOML config file
+
+data-path="/Node-2/data"
+genesis-file="/Node-2/genesis.json"
+
+pruning-enabled=true  
+
+nat-method="DOCKER"
+host-whitelist=["*"]
+
+# No Cost Tx
+min-gas-price=0
+
+# P2P related
+
+p2p-host="127.0.0.1"
+p2p-port=30314
+bootnodes=["enode://a40f8002321ceb85db811cd020801601d179e3ad419d719ea284079b28474f8a50f563fce4c5dd2318763b63ada5ce232cfdea17c179891c32a06882b4e8c263@127.0.0.1:30313"]
+# bootnode not needed if using docker host mode - nop needs it
+
+# RPC related
+
+rpc-http-enabled=true
+rpc-http-host="127.0.0.1"
+rpc-http-port=9548
+rpc-http-api=["ADMIN", "CLIQUE", "ETH", "NET", "TXPOOL", "WEB3", "DEBUG", "TXPOOL", "TRACE", "PLUGINS"]
+rpc-http-cors-origins=["*"]
