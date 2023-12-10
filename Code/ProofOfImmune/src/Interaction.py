@@ -3,7 +3,7 @@ from BlockchainUtils import BlockchainUtils
 import requests
 
 
-def postTransaction(sender, receiver, cp, type):
+def postTransaction(sender: Wallet, receiver: Wallet, cp, type):
     transaction = sender.createTransaction(receiver.publicKeyString(), cp, type)
     url = "http://localhost:5000/transaction"
     package = {'transaction': BlockchainUtils.encode(transaction)}
@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     bob = Wallet()
     alice = Wallet()
-    alice.fromKey('keys/stakerPrivateKey.pem')
+    alice.fromKey('keys/starterPrivateKey.pem')
     Self_score = Wallet()
 
     #karma: genesis
