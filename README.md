@@ -10,14 +10,14 @@ pip install -r requirements.txt
 
 To run each node you can use the following command. Including the command for 3 nodes being set up. You can test with more number of nodes. Add keys as per the requirements of new node.
 
-Node1: sudo python3 Main.py localhost 10001 5000 keys/genesisPrivateKey.pem
+Node1: python3 Main.py localhost 10001 5000 keys/genesisPrivateKey.pem
 
-Node2: sudo python3 Main.py localhost 10003 5003 keys/karmaPrivateKey.pem
+Node2: python3 Main.py localhost 10003 5003 keys/karmaPrivateKey.pem
 
-Node3: sudo python3 Main.py localhost 10002 5001
+Node3: python3 Main.py localhost 10002 5001
 
 
 Once the node is running, we can start testing the transaction.
 Each transaction execution can be made using
 
- python Interaction.py
+ python3 Interaction.py
