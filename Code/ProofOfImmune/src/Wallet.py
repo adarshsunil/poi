@@ -36,13 +36,13 @@ class Wallet():
             'PEM').decode('utf-8')
         return publicKeyString
 
-    def createTransaction(self, receiver, type):
+    def createTransaction(self, receiver, cp, type):
         transaction = Transaction(self.publicKeyString(), receiver, cp, type) # cp represents the consciousness parameter
         signature = self.sign(transaction.payload())
         transaction.sign(signature)
         return transaction
-    
-  
+
+
 
     def createBlock(self, transactions, lastHash,  blockCount):
         block = Block(transactions, lastHash,

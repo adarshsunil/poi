@@ -2,7 +2,7 @@ from BlockchainUtils import BlockchainUtils
 from Lot import Lot
 
 
-class ProofOfkarma():
+class ProofOfImmune():
 
     def __init__(self):
         self.karma = {}
@@ -47,7 +47,7 @@ class ProofOfkarma():
         lots = self.validatorLots(lastBlockHash)
         winnerLot = self.winnerLot(lots, lastBlockHash)
         return winnerLot.publicKey
-    
+
     def danger_score(karma_score, social_rep):
         danger = ((1-karma_score)*(1-social_rep))
         return danger
