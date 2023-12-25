@@ -1,21 +1,30 @@
-from Crypto.Hash import SHA256
-import json
-import jsonpickle
+from Wallet import Wallet
+from BlockchainUtils import BlockchainUtils
+import requests
 
 
-class BlockchainUtils():
+def postTransaction(sender, receiver, karma_score, social_rep, type):
+    transaction = sender.createTransaction(receiver.publicKeyString(), karma_score, social_rep, type)
+    url = "http://localhost:5000/transaction"
+    package = {'transaction': BlockchainUtils.encode(transaction)}
+    request = requests.post(url, json=package)
 
-    @staticmethod
-    def hash(data):
-        dataString = json.dumps(data)
-        dataBytes = dataString.encode('utf-8')
-        dataHash = SHA256.new(dataBytes)
-        return dataHash
 
-    @staticmethod
-    def encode(objectToEncode):
-        return jsonpickle.encode(objectToEncode, unpicklable=True)
+if __name__ == '__main__':
 
-    @staticmethod
-    def decode(encodedObject):
-        return jsonpickle.decode(encodedObject)
+    bob = Wallet()
+    alice = Wallet()
+    alice.fromKey('keys/karmaPrivateKey.pem')
+    Self_score = Wallet()
+
+    #karma: genesis
+    postTransaction(Self_score, alice, 1, 1, 'Self_score')
+    postTransaction(Self_score, bob, 1, 1, 'Self_score')
+    postTransaction(Self_score, bob, 1,1, 'Self_score')
+
+    # karma: probably alice
+    postTransaction(alice, alice, 2, 1, 'KARMA')
+    postTransaction(alice, bob, 3,1,  'Social_reputation')
+    postTransaction(alice, bob, 1, 1,'Social_reputation')
+
+#simulation for running transactions
