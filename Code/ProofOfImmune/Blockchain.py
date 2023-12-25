@@ -50,7 +50,7 @@ class Blockchain():
         if transaction.type == 'Self_score':
             return True
         senderBalance = self.accountModel.getBalance(transaction.senderPublicKey)
-        if senderBalance >= transaction.amount:
+        if senderBalance >= transaction.karma_score:
             return True
         else:
             return False
@@ -64,15 +64,15 @@ class Blockchain():
             sender = transaction.senderPublicKey
             receiver = transaction.receiverPublicKey
             if sender == receiver:
-                amount = transaction.amount
-                self.poi.update(sender, amount)
-                self.accountModel.updateBalance(sender, -amount)
+                karma_score = transaction.karma_score
+                self.poi.update(sender, karma_score)
+                self.accountModel.updateBalance(sender, -karma_score)
         else:
             sender = transaction.senderPublicKey
             receiver = transaction.receiverPublicKey
-            amount = transaction.amount
-            self.accountModel.updateBalance(sender, -amount)
-            self.accountModel.updateBalance(receiver, amount)
+            karma_score = transaction.karma_score
+            self.accountModel.updateBalance(sender, -karma_score)
+            self.accountModel.updateBalance(receiver, karma_score)
 
     def nextkarma(self):
         lastBlockHash = BlockchainUtils.hash(
